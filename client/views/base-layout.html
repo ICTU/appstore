@@ -1,0 +1,25 @@
+<template name="base-layout">
+  <!-- Header -->
+  <div id="top-nav" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Cloud AppStore {{appVersion}}
+          <!--img alt="ICTU Logo" src="/img/logo-ictu.png" --></a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{{pathFor 'appstore'}}">App Store</a></li>
+        </ul>
+        <ul class="nav navbar-nav" style="float: right;">
+          {{> atNavButton}}
+        </ul>
+      </div>
+    </div><!-- /container -->
+  </div>
+  <!-- /Header -->
+
+  <div class="content-container">
+    {{> yield}}
+  </div>
+
+</template>
