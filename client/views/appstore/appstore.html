@@ -1,43 +1,43 @@
 <template name="appstore">
   <div class="container appstore">
-      <div class="row">
-          <div class="col-sm-12">
-              <h1 class="pageTitle"><i class="glyphicon glyphicon-shopping-cart"></i> App Store</h1>
-          </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="pageTitle"><i class="glyphicon glyphicon-shopping-cart"></i> App Store</h1>
       </div>
-      <hr>
+    </div>
+    <hr>
 
+    <div class="row">
       {{#if currentUser}}
-        <div class="wrapper">
-          <div class="new-app">
-            <button style="vertical-align: middle;" type="button" class="btn btn-link center-block btn-edit-app" data-toggle="modal" data-target="#editbox-{{hash}}" title="Create new application">
-                <i style="font-size: 100px; color:grey;" class="glyphicon glyphicon-plus"></i>
+        <div class="col-sm-6 col-md-4 thumbnail-wrapper">
+          <div class="thumbnail">
+            <button type="button" class="btn btn-link center-block btn-edit-app" data-toggle="modal" data-target="#editbox-{{hash}}" title="Create new application">
+              <i style="font-size: 100px; color:grey;" class="glyphicon glyphicon-plus"></i>
             </button>
           </div>
         </div>
         {{> editAppDefBox}}
       {{/if}}
-
       {{#each apps}}
-        <div class="wrapper">
-          <div class="appcard">
-              <div style="background-image: url({{pic}});" class="pull-left img">&nbsp;</div>
-              <div class="pull-left">
+        <div class="col-sm-6 col-md-4 thumbnail-wrapper">
+          <div class="thumbnail">
+            <div class="row">
+              <div class="col-xs-7 text-center">
+                <img src="{{pic}}" style="max-height:180px" alt="{{name}}">
+              </div>
+              <div class="caption col-xs-5">
                 <h2>{{name}}</h2>
                 <h3>{{version}}</h3>
                 <p>
                   {{description}}
                 </p>
               </div>
-          </div>
-          <div class="optcard">
-            {{#if currentUser}}
-              <div class="btn-group" style="display:block">
+            </div>
+            <div class="card-controls">
+              {{#if currentUser}}
                 <a title="Edit" href="#" data-toggle="modal" data-target="#editbox-{{hash}}">
                   <i class="glyphicon glyphicon-cog"></i>
                 </a>
-              </div>
-              <div class="btn-group" style="display:block">
                 <a title="Remove" href="#" data-toggle="dropdown">
                   <i class="glyphicon glyphicon-trash"></i>
                 </a>
@@ -49,19 +49,17 @@
                   </div>
                   <button type="button" class="btn-remove-app btn btn-mini btn-danger pull-right">Yes!</button>
                 </form>
-              </div>
-            {{else}}
-              <div class="btn-group" style="display:block">
+              {{else}}
                 <a title="View" href="#" data-toggle="modal" data-target="#viewbox-{{hash}}">
                   <i class="glyphicon glyphicon-zoom-in"></i>
                 </a>
-              </div>
-            {{/if}}
-          </div>
+              {{/if}}
+            </div>
+          {{> editAppDefBox}}
+          {{> viewAppDefBox}}
+         </div>
         </div>
-        {{> editAppDefBox}}
-        {{> viewAppDefBox}}
       {{/each}}
-
+    </div>
   </div>
 </template>
