@@ -1,12 +1,24 @@
 Meteor.startup ->
+  adminFilter = ->
+    if Meteor.logginIn
+      @render 'loading'
+  #   else if !Roles.userIsInRole Meteor.user(), 'admin'
+  #     @render 'notFound'
+  #     @stop()
+  #   @next()
+
   Router.configure
     layoutTemplate: 'base-layout'
-
-  # Router.plugin 'ensureSignedIn', {
-  #   except: ['index']
-  # }
 
   Router.map ->
     @route 'appstore',
       path: '/'
       subscriptions: -> Meteor.subscribe 'appstore'
+    @route 'config',
+      # before: adminFilter
+      template: 'config'
+      path: '/config'
+      subscriptions: -> [
+        Meteor.subscribe 'thaRoles',
+        Meteor.subscribe 'thaUsers'
+      ]
