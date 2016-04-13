@@ -1,0 +1,9 @@
+{
+  "ldap" : {
+    "serverAddr": "ldap://10.25.85.10",
+    "serverPort": "10389",
+    "baseDn": "dc=ictu,dc=nl",
+    "superDn": "cn=super,ou=shellusers,o=LRK,dc=ictu,dc=nl",
+    "superPass" : "123456"
+  }
+}

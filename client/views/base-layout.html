@@ -1,17 +1,51 @@
 <template name="base-layout">
   <!-- Header -->
+  {{> sAlert}}
+
   <div id="top-nav" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">Cloud AppStore {{appVersion}}
-          <!--img alt="ICTU Logo" src="/img/logo-ictu.png" --></a>
+        <a class="navbar-brand" href="/">Cloud AppStore {{appVersion}}</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="{{pathFor 'appstore'}}">App Store</a></li>
         </ul>
-        <ul class="nav navbar-nav" style="float: right;">
-          {{> atNavButton}}
+        {{#if isInRole 'admin' }}
+        <ul class="nav navbar-nav">
+          <li><a href="{{pathFor 'config'}}">Configuration</a></li>
+        </ul>
+        {{/if}}
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            {{#if currentUser}}
+            <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+              <i class="glyphicon glyphicon-user"></i> {{currentUser.username}} <span class="caret"></span>
+            </a>
+            <ul id="g-account-menu" class="dropdown-menu" role="menu">
+              <li><a id="logOut" href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+            </ul>
+            {{else}}
+            <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+              <i class="glyphicon glyphicon-user"></i> Log In <span class="caret"></span>
+            </a>
+            <div id="g-account-menu" class="dropdown-menu" style="padding-right:30px;padding-left:30px">
+              <form class="form" id="formLogin">
+                <div class="form-group row">
+                  <div class="col-sm-15" style="margin:5px">
+                    <input name="username" id="username" class="form-control" placeholder="Username" type="text">
+                  </div>
+                  <div class="col-sm-15" style="margin:5px">
+                    <input name="password" id="password" class="form-control" placeholder="Password" type="password"><br>
+                  </div>
+                  <div class="col-sm-offset-2 col-sm-15">
+                    <button type="submit" id="btnLogin" class="btn btn-info">Log In</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            {{/if}}
+          </li>
         </ul>
       </div>
     </div><!-- /container -->

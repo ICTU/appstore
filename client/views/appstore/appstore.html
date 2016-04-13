@@ -8,7 +8,7 @@
     <hr>
 
     <div class="row">
-      {{#if currentUser}}
+      {{#if isInRole 'admin,editor' }}
         <div class="col-sm-6 col-md-4 thumbnail-wrapper">
           <div class="thumbnail">
             <button type="button" class="btn btn-link center-block btn-edit-app" data-toggle="modal" data-target="#editbox-{{hash}}" title="Create new application">
@@ -34,7 +34,7 @@
               </div>
             </div>
             <div class="card-controls">
-              {{#if currentUser}}
+              {{#if isInRole 'admin,editor' }}
                 <a title="Edit" href="#" data-toggle="modal" data-target="#editbox-{{hash}}">
                   <i class="glyphicon glyphicon-cog"></i>
                 </a>
