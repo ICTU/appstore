@@ -17,5 +17,4 @@ Template.registeredRoles.events
         console.error err
 
 Template.registeredRoles.helpers
-  currentRole: -> console.log (Template.parentData '0')
   hasRole: -> Roles.userIsInRole(Template.parentData('1'), Template.parentData('0').name, Roles.GLOBAL_GROUP)
