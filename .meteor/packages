@@ -13,7 +13,8 @@ iron:router
 udondan:yml
 pntbr:js-yaml-client
 fourseven:scss
-twbs:bootstrap
+less
+nemo64:bootstrap
 jparker:crypto-md5
 reactive-var
 useraccounts:bootstrap
@@ -23,5 +24,4 @@ typ:accounts-ldap
 alanning:roles
 juliancwirko:s-alert
 juliancwirko:s-alert-slide
-themeteorchef:bert
 ahref:dragula
