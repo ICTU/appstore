@@ -20,7 +20,8 @@
           <li class="dropdown">
             {{#if currentUser}}
             <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-              <i class="glyphicon glyphicon-user"></i> {{currentUser.username}} <span class="caret"></span>
+              <img class="avatar" src="{{gravatarUrl}}">
+              {{currentUser.username}} <span class="caret"></span>
             </a>
             <ul id="g-account-menu" class="dropdown-menu" role="menu">
               <li><a id="logOut" href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
