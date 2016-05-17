@@ -15,3 +15,5 @@ Template['base-layout'].events
 
 Template['base-layout'].helpers
   appVersion: -> version
+  gravatarUrl: ->
+    "http://www.gravatar.com/avatar/#{CryptoJS.MD5(Meteor.user().profile.email).toString()}?s=24"
