@@ -1,3 +1,6 @@
+Meteor.startup ->
+  DocHead.setTitle("Big Boat AppStore #{version or ''}")
+
 Template['base-layout'].events
   'submit #formLogin': (e) ->
     e.preventDefault()
@@ -5,8 +8,7 @@ Template['base-layout'].events
     password = e.target.password.value
     Meteor.loginWithLDAP username, password, { searchBeforeBind: {'uid': username} }, (err, res) ->
       if err
-        sAlert.error "Login failed: #{err.message}"
-        throw new Meteor.Error err.code, err.message
+        sAlert.error "Login failed!"
       else
         sAlert.info "#{Meteor.user().username} logged in."
   'click #logOut': ->
