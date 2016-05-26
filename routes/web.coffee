@@ -2,10 +2,6 @@ Meteor.startup ->
   adminFilter = ->
     if Meteor.logginIn
       @render 'loading'
-  #   else if !Roles.userIsInRole Meteor.user(), 'admin'
-  #     @render 'notFound'
-  #     @stop()
-  #   @next()
 
   Router.configure
     layoutTemplate: 'base-layout'
