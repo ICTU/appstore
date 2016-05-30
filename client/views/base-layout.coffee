@@ -1,5 +1,5 @@
 Meteor.startup ->
-  DocHead.setTitle("Big Boat AppStore #{version or ''}")
+  DocHead.setTitle("Big Boat #{Helper.appVersion() or ''}")
 
 Template['base-layout'].events
   'submit #formLogin': (e) ->
